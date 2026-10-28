@@ -1,0 +1,11 @@
+{
+  "name": "Ishwar Pharmacy & Pharma Clinic | Pachrukhiya Kanchanpur",
+  "description": "Official medical store & healthcare clinic in Pachrukhiya, Kanchanpur, UP. Check live medicine availability, book home delivery to nearby villages, schedule clinic appointments, scan prescriptions with AI, and track orders in real-time.",
+  "requestFramePermissions": [
+    "geolocation",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
