@@ -34,12 +34,50 @@ interface SeasonalHealthTipsProps {
   onSearchMedicine?: (medName: string) => void;
 }
 
+const DEFAULT_ADVISORY: SeasonalHealthAdvisory = {
+  seasonName: "Eastern UP Spring-Summer Transition",
+  weatherSummary: "Warm afternoons, dry breeze and shifting temperatures across Pachrukhiya & Kanchanpur rural belt.",
+  advisoryTitle: "Seasonal Climate & Wellness Advisory for Pachrukhiya & Deoria Belt",
+  localLocation: "Pachrukhiya, Kanchanpur & Nearby Villages",
+  recommendations: [
+    {
+      id: "rec-1",
+      category: "hydration",
+      title: "Daily Electrolyte & Hydration Balance",
+      advice: "With rising day temperatures in Eastern UP, keep ORS solutions and glucose water handy. Drink boiled and cooled water.",
+      recommendedMedicine: "Electral Powder ORS"
+    },
+    {
+      id: "rec-2",
+      category: "prevention",
+      title: "Seasonal Flu & Dust Allergy Care",
+      advice: "Evening breeze often brings pollen and crop dust. Wash face after returning from farms. Keep antihistamines ready.",
+      recommendedMedicine: "Montair-LC Tablet"
+    },
+    {
+      id: "rec-3",
+      category: "children_elderly",
+      title: "Elderly BP & Digestion Monitoring",
+      advice: "Temperature changes can fluctuate blood pressure. Ensure morning BP checks and light, easily digestible meals.",
+      recommendedMedicine: "Digene Antacid Liquid (Mint)"
+    },
+    {
+      id: "rec-4",
+      category: "ayush",
+      title: "Immunity & First Aid Preparedness",
+      advice: "Keep basic antiseptics and zinc supplements at home for sudden seasonal cuts and fatigue.",
+      recommendedMedicine: "Betadine 5% Antiseptic Ointment"
+    }
+  ],
+  emergencyDisclaimer: "This wellness advice is for informational guidance only. For acute conditions, visit Drx. Babalu Singh at Ishwar Pharma Clinic, Goraya Ghat Road."
+};
+
 export const SeasonalHealthTips: React.FC<SeasonalHealthTipsProps> = ({
   onSearchMedicine,
 }) => {
-  const [advisory, setAdvisory] = useState<SeasonalHealthAdvisory | null>(null);
+  const [advisory, setAdvisory] = useState<SeasonalHealthAdvisory>(DEFAULT_ADVISORY);
   const [loading, setLoading] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState<string>('');
+  const [lastUpdated, setLastUpdated] = useState<string>('Live');
 
   const fetchSeasonalTips = async () => {
     setLoading(true);
@@ -51,7 +89,7 @@ export const SeasonalHealthTips: React.FC<SeasonalHealthTipsProps> = ({
         setLastUpdated(new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }));
       }
     } catch (err) {
-      console.error('Failed to fetch seasonal health tips:', err);
+      // In static deployment like GitHub Pages, seamlessly keeps DEFAULT_ADVISORY
     } finally {
       setLoading(false);
     }

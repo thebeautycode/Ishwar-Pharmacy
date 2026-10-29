@@ -155,24 +155,62 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         prescriptionAttached: hasRxMedicines
       };
 
-      const response = await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+      let order: Order | null = null;
+      try {
+        const response = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to place order');
+        if (response.ok) {
+          order = await response.json();
+        }
+      } catch {
+        // Continue to offline fallback
       }
 
-      const order: Order = await response.json();
+      // If backend is not available (e.g. GitHub Pages static deployment)
+      if (!order) {
+        const orderNum = `IP-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+        order = {
+          id: `ORD-${Date.now()}`,
+          orderNumber: orderNum,
+          createdAt: new Date().toISOString(),
+          customerName: customerUser.name.trim(),
+          customerPhone: customerUser.phone.trim(),
+          deliveryType,
+          village: selectedVillage,
+          address: deliveryType === 'home_delivery' ? address.trim() : 'Store Pickup Counter',
+          landmark: landmark.trim() || undefined,
+          notes: deliveryNotes.trim() || undefined,
+          items: cartItems.map(item => ({
+            medicineId: item.medicine.id,
+            name: item.medicine.name,
+            price: item.medicine.price,
+            quantity: item.quantity,
+            dosageForm: item.medicine.dosageForm,
+          })),
+          subtotal,
+          deliveryFee: 0,
+          total,
+          paymentMethod,
+          status: 'pending',
+          prescriptionAttached: hasRxMedicines,
+        };
+
+        try {
+          const existing = JSON.parse(localStorage.getItem('ishwar_orders') || '[]');
+          localStorage.setItem('ishwar_orders', JSON.stringify([order, ...existing]));
+        } catch {}
+      }
+
       setPlacedOrder(order);
       onOrderPlaced(order);
       onClearCart();
 
       // Trigger browser notification
-      NotificationService.notifyOrderStatus(order.orderNumber, 'placed', order.village);
+      NotificationService.notifyOrderStatus(order.orderNumber, 'pending', order.village);
 
     } catch (err: any) {
       console.error('Order submission failed:', err);
@@ -188,7 +226,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       `${idx + 1}. *${i.name}* (${i.dosageForm})\n   मात्रा: ${i.quantity} | दर: ₹${i.price} = ₹${i.price * i.quantity}`
     ).join('\n');
 
-    const trackUrl = `${window.location.origin}/?order=${order.orderNumber}`;
+    const trackUrl = `${window.location.href.split('?')[0]}?order=${order.orderNumber}`;
 
     const text = 
 `🧾 *ईश्वर फार्मेसी & फार्मा क्लिनिक - मेडिकल बिल*

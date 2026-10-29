@@ -24,11 +24,21 @@ import { PolicyModals, PolicyType } from './components/PolicyModals';
 import { Footer } from './components/Footer';
 import { Medicine, CartItem, Order, CustomerUser } from './types';
 import { STORE_CONFIG } from './data/storeConfig';
+import { INITIAL_MEDICINES } from './data/initialMedicines';
 import { Phone, MessageCircle, Sparkles, ShoppingBag } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
-  const [medicines, setMedicines] = useState<Medicine[]>([]);
+  const [medicines, setMedicines] = useState<Medicine[]>(() => {
+    try {
+      const saved = localStorage.getItem('ishwar_medicines');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return INITIAL_MEDICINES;
+  });
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [trackingOrderNumber, setTrackingOrderNumber] = useState<string | undefined>(undefined);
   
@@ -60,16 +70,22 @@ export default function App() {
   const [refillModalOpen, setRefillModalOpen] = useState(false);
   const [policyModalType, setPolicyModalType] = useState<PolicyType | null>(null);
 
-  // Fetch medicines inventory from server
+  // Fetch medicines inventory from server (if running in full-stack mode)
   const fetchMedicines = async () => {
     try {
       const res = await fetch('/api/medicines');
       if (res.ok) {
         const data = await res.json();
-        setMedicines(data);
+        if (Array.isArray(data) && data.length > 0) {
+          setMedicines(data);
+          try {
+            localStorage.setItem('ishwar_medicines', JSON.stringify(data));
+          } catch {}
+        }
       }
     } catch (err) {
-      console.error('Failed to load medicines:', err);
+      // Graceful fallback for static hosting (e.g. GitHub Pages)
+      console.info('Operating with offline/local catalog.');
     }
   };
 

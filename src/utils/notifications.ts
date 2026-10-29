@@ -23,7 +23,7 @@ export class NotificationService {
       if (permission === 'granted') {
         this.sendNotification('Ishwar Pharmacy Notifications Enabled! 🔔', {
           body: 'You will receive real-time alerts for medicine delivery status and clinic appointments.',
-          icon: '/assets/aistudio/Mediacal_Store_Pachrukhiya_Logo_931f9324.jpeg',
+          icon: './assets/aistudio/Mediacal_Store_Pachrukhiya_Logo_931f9324.jpeg',
         });
         return true;
       }
@@ -39,7 +39,7 @@ export class NotificationService {
     if (Notification.permission !== 'granted') return;
 
     try {
-      const defaultIcon = '/assets/aistudio/Mediacal_Store_Pachrukhiya_Logo_931f9324.jpeg';
+      const defaultIcon = './assets/aistudio/Mediacal_Store_Pachrukhiya_Logo_931f9324.jpeg';
       const notification = new Notification(title, {
         icon: defaultIcon,
         badge: defaultIcon,

@@ -52,16 +52,35 @@ export const TrackOrder: React.FC<TrackOrderProps> = ({
 
     try {
       const res = await fetch(`/api/orders/track?q=${encodeURIComponent(query.trim())}`);
-      if (!res.ok) throw new Error('Failed to search order status');
-      const data: Order[] = await res.json();
-      setSearchedOrders(data);
-      if (data.length > 0) {
-        setSelectedOrder(data[0]);
-      } else {
-        setSelectedOrder(null);
+      if (res.ok) {
+        const data: Order[] = await res.json();
+        setSearchedOrders(data);
+        if (data.length > 0) {
+          setSelectedOrder(data[0]);
+        } else {
+          setSelectedOrder(null);
+        }
+        return;
       }
-    } catch (err: any) {
-      setError(err.message || 'Error tracking order. Please try again.');
+      throw new Error('API unavailable');
+    } catch {
+      // Fallback for static hosting like GitHub Pages
+      try {
+        const localSaved = localStorage.getItem('ishwar_orders') || localStorage.getItem('ishwar_placed_orders');
+        const customOrders: Order[] = localSaved ? JSON.parse(localSaved) : [];
+        const { INITIAL_ORDERS } = await import('../data/initialMedicines');
+        const allOrders = [...customOrders, ...INITIAL_ORDERS];
+        const q = query.trim().toLowerCase();
+        const matches = allOrders.filter(o => 
+          o.orderNumber.toLowerCase().includes(q) ||
+          o.customerPhone.includes(q) ||
+          o.customerName.toLowerCase().includes(q)
+        );
+        setSearchedOrders(matches);
+        setSelectedOrder(matches.length > 0 ? matches[0] : null);
+      } catch {
+        setError('No order found matching this Order Number or Phone.');
+      }
     } finally {
       setLoading(false);
     }

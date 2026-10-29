@@ -50,22 +50,37 @@ export const CustomerOrdersModal: React.FC<CustomerOrdersModalProps> = ({
     setLoading(true);
     try {
       // Fetch customer orders
-      const ordRes = await fetch(`/api/orders/track?q=${encodeURIComponent(user.phone)}`);
-      if (ordRes.ok) {
-        const ordData = await ordRes.json();
-        setOrders(ordData);
+      let ordersLoaded = false;
+      try {
+        const ordRes = await fetch(`/api/orders/track?q=${encodeURIComponent(user.phone)}`);
+        if (ordRes.ok) {
+          const ordData = await ordRes.json();
+          setOrders(ordData);
+          ordersLoaded = true;
+        }
+      } catch {}
+
+      if (!ordersLoaded) {
+        try {
+          const localSaved = localStorage.getItem('ishwar_orders');
+          const customOrders: Order[] = localSaved ? JSON.parse(localSaved) : [];
+          const userPhoneClean = user.phone.replace(/\D/g, '');
+          const matches = customOrders.filter(o => o.customerPhone.replace(/\D/g, '').includes(userPhoneClean));
+          setOrders(matches);
+        } catch {}
       }
 
       // Fetch invoices
-      const invRes = await fetch('/api/invoices');
-      if (invRes.ok) {
-        const allInvoices: RetailInvoice[] = await invRes.json();
-        // Match by phone number
-        const userInvoices = allInvoices.filter(i => 
-          i.customerPhone && i.customerPhone.replace(/\D/g, '').includes(user.phone)
-        );
-        setInvoices(userInvoices);
-      }
+      try {
+        const invRes = await fetch('/api/invoices');
+        if (invRes.ok) {
+          const allInvoices: RetailInvoice[] = await invRes.json();
+          const userInvoices = allInvoices.filter(i => 
+            i.customerPhone && i.customerPhone.replace(/\D/g, '').includes(user.phone)
+          );
+          setInvoices(userInvoices);
+        }
+      } catch {}
     } catch (err) {
       console.error('Failed to load user orders:', err);
     } finally {

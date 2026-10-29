@@ -11,9 +11,9 @@ export const STORE_CONFIG = {
   emergencyAvailability: "Emergency medicine assistance on call 24/7",
   rating: 5.0,
   reviewsCount: 2,
-  logoUrl: "/assets/aistudio/Mediacal_Store_Pachrukhiya_Logo_931f9324.jpeg",
-  familyBannerUrl: "/assets/aistudio/Mediacal_Store_in_Pachrukhiya_Kanchanpur_deoria_69c080e2.png",
-  storePhotoUrl: "/assets/aistudio/Mediacal_Store_in_Pachrukhiya_Kanchanpur_3b1ee21c.jpeg",
+  logoUrl: "./assets/aistudio/Mediacal_Store_Pachrukhiya_Logo_931f9324.jpeg",
+  familyBannerUrl: "./assets/aistudio/Mediacal_Store_in_Pachrukhiya_Kanchanpur_deoria_69c080e2.png",
+  storePhotoUrl: "./assets/aistudio/Mediacal_Store_in_Pachrukhiya_Kanchanpur_3b1ee21c.jpeg",
   googleMapsUrl: "https://maps.google.com/?q=Pachrukhiya+Kanchanpur+Goraya+Ghat+Road+Uttar+Pradesh+274408",
   aboutText: "Ishwer Pharmacy and Farma Clinic is a local pharmacy and medical store in Pachrukhiya, Kanchanpur. We serve customers from nearby areas, including Sidhawe, Kaulamundera, Bhagona Tola, Paraskhan, Sirwania, Tarkulwa, and Goryaghat Road. We provide medicines and everyday healthcare products for individuals and families. Our aim is to offer friendly service and help customers check medicine availability. Visit Ishwer Pharmacy and Farma Clinic for medicines and healthcare essentials in Pachrukhiya, Kanchanpur, and nearby areas.",
   villagesServed: [
