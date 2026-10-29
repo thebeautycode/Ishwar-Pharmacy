@@ -176,7 +176,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
     } catch (err: any) {
       console.error('Order submission failed:', err);
-      setErrorMessage(err.message || 'Failed to submit order. Please check stock or call 9118137582.');
+      setErrorMessage(err.message || 'Failed to submit order. Please check stock or call 9118137285.');
     } finally {
       setSubmitting(false);
     }
@@ -194,7 +194,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 `🧾 *ईश्वर फार्मेसी & फार्मा क्लिनिक - मेडिकल बिल*
 📍 पचरुखिया, कंचनपुर (गोरया घाट रोड)
 👨‍⚕️ *Drx. Babalu Singh (B.Sc, D Pharma)*
-📞 हेल्पलाइन: 9118137582 | DL: UP-894102
+📞 हेल्पलाइन: 9118137285 | DL: UP-894102
 ------------------------------------------
 📋 *ऑर्डर नंबर*: *${order.orderNumber}*
 📅 *दिनांक*: ${new Date(order.createdAt).toLocaleString('en-IN')}
@@ -281,7 +281,7 @@ ${trackUrl}
                     Drx. Babalu Singh (B.Sc, D Pharma) · Reg. No: UP-894102 | GSTIN: 09AABCI8912P1Z0
                   </p>
                   <p className="text-[11px] text-slate-500">
-                    Goraya Ghat Road, Pachrukhiya, Kanchanpur, Deoria, UP · Helpline: +91 9118137582
+                    Goraya Ghat Road, Pachrukhiya, Kanchanpur, Deoria, UP · Helpline: +91 9118137285
                   </p>
                   <div className="inline-block text-[10px] font-bold bg-slate-900 text-white px-2.5 py-0.5 rounded-full uppercase mt-1">
                     TAX INVOICE / RETAIL CASH MEMO
@@ -361,7 +361,7 @@ ${trackUrl}
                 </div>
 
                 <div className="pt-2 border-t border-slate-200 text-center text-[10px] text-slate-400">
-                  This is a computer-generated invoice from Ishwar Pharmacy. For return or questions call 9118137582.
+                  This is a computer-generated invoice from Ishwar Pharmacy. For return or questions call 9118137285.
                 </div>
               </div>
 
@@ -563,7 +563,7 @@ ${trackUrl}
                           maxLength={10}
                           value={regPhone}
                           onChange={(e) => setRegPhone(e.target.value)}
-                          placeholder="9118137582"
+                          placeholder="9118137285"
                           className="w-full pl-9 pr-3 py-2 bg-white border border-amber-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none"
                         />
                       </div>

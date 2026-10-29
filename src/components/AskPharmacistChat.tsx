@@ -93,7 +93,7 @@ export const AskPharmacistChat: React.FC<AskPharmacistChatProps> = ({
       }
 
       const data = await response.json();
-      const replyText = data.reply || "Namaste! Please feel free to call our pharmacy counter directly at 9118137582.";
+      const replyText = data.reply || "Namaste! Please feel free to call our pharmacy counter directly at 9118137285.";
 
       const assistantMsg: ChatMessage = {
         id: `ast-${Date.now()}`,
@@ -117,7 +117,7 @@ export const AskPharmacistChat: React.FC<AskPharmacistChatProps> = ({
       const fallbackMsg: ChatMessage = {
         id: `ast-${Date.now()}`,
         sender: 'assistant',
-        text: "Namaste! Our pharmacy phone lines are open. You can call or WhatsApp our chief pharmacist at +91 9118137582 for immediate medicine availability and orders in Pachrukhiya.",
+        text: "Namaste! Our pharmacy phone lines are open. You can call or WhatsApp our chief pharmacist at +91 9118137285 for immediate medicine availability and orders in Pachrukhiya.",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages(prev => [...prev, fallbackMsg]);

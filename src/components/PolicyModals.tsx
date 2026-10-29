@@ -82,7 +82,7 @@ export const PolicyModals: React.FC<PolicyModalsProps> = ({
 
               <h4 className="text-sm font-bold text-[#0f2942]">3. Communication via WhatsApp & SMS</h4>
               <p>
-                Order status updates, dispatch notifications, digital cash memos, and refill alerts are sent solely to the phone number authorized by the customer. You can opt out at any time by calling 9118137582.
+                Order status updates, dispatch notifications, digital cash memos, and refill alerts are sent solely to the phone number authorized by the customer. You can opt out at any time by calling 9118137285.
               </p>
             </div>
           )}
@@ -108,7 +108,7 @@ export const PolicyModals: React.FC<PolicyModalsProps> = ({
 
               <h4 className="text-sm font-bold text-[#0f2942]">3. Instant Refund / Credit Memo</h4>
               <p>
-                Refunds are processed immediately at our counter via Cash or UPI, or credited toward future prescription orders. Call 9118137582 for pickup assistance.
+                Refunds are processed immediately at our counter via Cash or UPI, or credited toward future prescription orders. Call 9118137285 for pickup assistance.
               </p>
             </div>
           )}
@@ -204,7 +204,7 @@ export const PolicyModals: React.FC<PolicyModalsProps> = ({
         <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between shrink-0">
           <div className="text-[11px] text-slate-500 flex items-center gap-1.5">
             <Phone className="w-3.5 h-3.5 text-emerald-700" />
-            <span>Support: +91 9118137582</span>
+            <span>Support: +91 9118137285</span>
           </div>
           <button
             onClick={onClose}

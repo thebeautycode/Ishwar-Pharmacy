@@ -293,7 +293,7 @@ export const PharmacyPOSBilling: React.FC<PharmacyPOSBillingProps> = ({
 
     const addressLine = inv.manualAddress ? `${inv.village}, ${inv.manualAddress}` : inv.village;
 
-    const msg = `*ISHWAR PHARMACY & PHARMA CLINIC*\nGoraya Ghat Road, Pachrukhiya, Kanchanpur, UP\nDL No: UP-DEO-2024-00984 | GSTIN: 09AAECI1234F1Z5\nHelpline & WhatsApp: 9118137582\n--------------------------------\n*RETAIL MEDICAL MEMO / CASH BILL*\n*Bill No:* ${inv.invoiceNumber}\n*Date:* ${new Date(inv.createdAt).toLocaleString('en-IN')}\n*Customer:* ${inv.customerName} (${addressLine})\n*Doctor:* ${inv.doctorName || 'Self / OTC'}\n--------------------------------\n*MEDICINES:*\n${itemsList}\n--------------------------------\n*Subtotal:* ₹${inv.subtotal}\n*Discount:* ₹${inv.discount}\n*GST (${inv.gstPercent || 0}%):* ₹${inv.tax} (CGST: ₹${inv.cgstAmount || 0} + SGST: ₹${inv.sgstAmount || 0})\n*GRAND TOTAL:* ₹${inv.grandTotal}\n*Payment Mode:* ${inv.paymentMode}\n--------------------------------\nThank you for choosing Ishwar Pharmacy! Wishing you sound health.`;
+    const msg = `*ISHWAR PHARMACY & PHARMA CLINIC*\nGoraya Ghat Road, Pachrukhiya, Kanchanpur, UP\nDL No: UP-DEO-2024-00984 | GSTIN: 09AAECI1234F1Z5\nHelpline & WhatsApp: 9118137285\n--------------------------------\n*RETAIL MEDICAL MEMO / CASH BILL*\n*Bill No:* ${inv.invoiceNumber}\n*Date:* ${new Date(inv.createdAt).toLocaleString('en-IN')}\n*Customer:* ${inv.customerName} (${addressLine})\n*Doctor:* ${inv.doctorName || 'Self / OTC'}\n--------------------------------\n*MEDICINES:*\n${itemsList}\n--------------------------------\n*Subtotal:* ₹${inv.subtotal}\n*Discount:* ₹${inv.discount}\n*GST (${inv.gstPercent || 0}%):* ₹${inv.tax} (CGST: ₹${inv.cgstAmount || 0} + SGST: ₹${inv.sgstAmount || 0})\n*GRAND TOTAL:* ₹${inv.grandTotal}\n*Payment Mode:* ${inv.paymentMode}\n--------------------------------\nThank you for choosing Ishwar Pharmacy! Wishing you sound health.`;
     return encodeURIComponent(msg);
   };
 
@@ -1160,7 +1160,7 @@ export const PharmacyPOSBilling: React.FC<PharmacyPOSBillingProps> = ({
                   <span>•</span>
                   <span>GSTIN: 09AAECI1234F1Z5</span>
                   <span>•</span>
-                  <span>Helpline: 9118137582</span>
+                  <span>Helpline: 9118137285</span>
                 </div>
               </div>
 
@@ -1288,7 +1288,7 @@ export const PharmacyPOSBilling: React.FC<PharmacyPOSBillingProps> = ({
               {/* Footer Note */}
               <div className="text-center text-[10px] text-slate-400 border-t border-slate-200 pt-3">
                 <p>Thank you for trusting Ishwar Pharmacy & Pharma Clinic!</p>
-                <p>For home delivery in nearby villages, call 9118137582.</p>
+                <p>For home delivery in nearby villages, call 9118137285.</p>
               </div>
             </div>
 

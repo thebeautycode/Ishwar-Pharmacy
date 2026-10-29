@@ -162,7 +162,7 @@ export const PrescriptionScanner: React.FC<PrescriptionScannerProps> = ({
       setResult(data);
     } catch (err: any) {
       console.error('Prescription scanning error:', err);
-      setError(err?.message || 'Failed to analyze prescription. Please ensure the image is clear or WhatsApp it directly to 9118137582.');
+      setError(err?.message || 'Failed to analyze prescription. Please ensure the image is clear or WhatsApp it directly to 9118137285.');
     } finally {
       setAnalyzing(false);
     }
@@ -319,7 +319,7 @@ export const PrescriptionScanner: React.FC<PrescriptionScannerProps> = ({
             <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 flex items-center justify-between text-left">
               <div>
                 <span className="font-bold block">Prefer sending on WhatsApp?</span>
-                <span className="text-emerald-700">Send photo to +91 9118137582</span>
+                <span className="text-emerald-700">Send photo to {STORE_CONFIG.displayPhone}</span>
               </div>
               <a
                 href={STORE_CONFIG.whatsappUrl}

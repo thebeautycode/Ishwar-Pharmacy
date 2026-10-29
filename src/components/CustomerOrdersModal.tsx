@@ -85,7 +85,7 @@ export const CustomerOrdersModal: React.FC<CustomerOrdersModalProps> = ({
     const itemsList = ord.items.map((i, idx) => 
       `${idx + 1}. *${i.name}* (${i.dosageForm}) - ${i.quantity} x ₹${i.price} = ₹${i.price * i.quantity}`
     ).join('\n');
-    const msg = `🧾 *ईश्वर फार्मेसी & फार्मा क्लिनिक - बिल कॉपी*\n📍 पचरुखिया, कंचनपुर (गोरया घाट रोड) | 📞 9118137582\n\n📋 *ऑर्डर नंबर*: *${ord.orderNumber}*\n📅 *तारीख*: ${new Date(ord.createdAt).toLocaleString('en-IN')}\n👤 *ग्राहक*: ${ord.customerName} (${ord.customerPhone})\n🏠 *पता*: ${ord.village}, ${ord.address}\n\n💊 *दवाइयां*:\n${itemsList}\n\n💵 *कुल बिल*: *₹${ord.total}*\n🛵 *स्थिति*: ${ord.status}\n\n🔗 *लाइव ट्रैक करें*: ${window.location.origin}/?order=${ord.orderNumber}`;
+    const msg = `🧾 *ईश्वर फार्मेसी & फार्मा क्लिनिक - बिल कॉपी*\n📍 पचरुखिया, कंचनपुर (गोरया घाट रोड) | 📞 9118137285\n\n📋 *ऑर्डर नंबर*: *${ord.orderNumber}*\n📅 *तारीख*: ${new Date(ord.createdAt).toLocaleString('en-IN')}\n👤 *ग्राहक*: ${ord.customerName} (${ord.customerPhone})\n🏠 *पता*: ${ord.village}, ${ord.address}\n\n💊 *दवाइयां*:\n${itemsList}\n\n💵 *कुल बिल*: *₹${ord.total}*\n🛵 *स्थिति*: ${ord.status}\n\n🔗 *लाइव ट्रैक करें*: ${window.location.origin}/?order=${ord.orderNumber}`;
     return encodeURIComponent(msg);
   };
 
@@ -236,7 +236,7 @@ export const CustomerOrdersModal: React.FC<CustomerOrdersModalProps> = ({
                           <Truck className="w-4 h-4 text-amber-600 animate-bounce" />
                           <span>Rider: <strong>{ord.riderName || 'Rameshwar Yadav'}</strong> ({ord.estimatedDelivery || '20 mins'})</span>
                         </div>
-                        <a href={`tel:${ord.riderPhone || '9118137582'}`} className="underline font-bold">
+                        <a href={`tel:${ord.riderPhone || '9118137285'}`} className="underline font-bold">
                           Call
                         </a>
                       </div>

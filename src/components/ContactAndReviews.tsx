@@ -79,7 +79,7 @@ export const ContactAndReviews: React.FC = () => {
       setMessage('');
     } catch (err: any) {
       console.error('Enquiry submission error:', err);
-      setErrorMessage(err.message || 'Failed to submit enquiry. Please call 9118137582 directly.');
+      setErrorMessage(err.message || 'Failed to submit enquiry. Please call 9118137285 directly.');
     } finally {
       setSubmitting(false);
     }
@@ -113,7 +113,7 @@ export const ContactAndReviews: React.FC = () => {
     if (navigator.share) {
       navigator.share({
         title: 'Ishwar Pharmacy & Pharma Clinic',
-        text: 'Medical store and clinic in Pachrukhiya, Kanchanpur UP. Call 9118137582.',
+        text: 'Medical store and clinic in Pachrukhiya, Kanchanpur UP. Call 9118137285.',
         url: window.location.href,
       }).catch(() => {});
     } else {

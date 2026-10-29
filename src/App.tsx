@@ -317,7 +317,7 @@ export default function App() {
           title="WhatsApp Ishwar Pharmacy"
         >
           <MessageCircle className="w-5 h-5" />
-          <span className="text-xs font-bold hidden sm:inline">9118137582</span>
+          <span className="text-xs font-bold hidden sm:inline">{STORE_CONFIG.phone}</span>
         </a>
       </div>
 

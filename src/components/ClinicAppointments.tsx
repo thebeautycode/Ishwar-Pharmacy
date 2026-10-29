@@ -127,7 +127,7 @@ export const ClinicAppointments: React.FC = () => {
       NotificationService.notifyAppointmentBooking(data.appointmentNumber, data.appointmentDate, data.timeSlot);
     } catch (err: any) {
       console.error('Appointment booking error:', err);
-      setErrorMessage(err.message || 'Could not schedule appointment. Please call 9118137582.');
+      setErrorMessage(err.message || 'Could not schedule appointment. Please call 9118137285.');
     } finally {
       setSubmitting(false);
     }
@@ -239,13 +239,13 @@ export const ClinicAppointments: React.FC = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
                 <a
-                  href={`https://wa.me/919118137582?text=${getWhatsAppAppointmentMessage(confirmedAppointment)}`}
+                  href={`https://wa.me/919118137285?text=${getWhatsAppAppointmentMessage(confirmedAppointment)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Send Token to WhatsApp (+91 9118137582)</span>
+                  <span>Send Token to WhatsApp (+91 9118137285)</span>
                 </a>
 
                 <button
