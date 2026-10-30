@@ -5,7 +5,7 @@
     <title>Ishwar Pharmacy & Pharma Clinic</title>
     <script type="text/javascript">
       // GitHub Pages SPA redirect: preserves path and redirects to index.html
-      var pathSegmentsToKeep = 1;
+      var pathSegmentsToKeep = window.location.pathname.includes('/docs/') ? 2 : 1;
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +

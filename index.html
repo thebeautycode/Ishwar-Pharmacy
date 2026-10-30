@@ -15,6 +15,22 @@
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased selection:bg-emerald-600 selection:text-white">
     <div id="root"></div>
+    <script>
+      // GitHub Pages Blank Screen Safeguard:
+      // When deployed directly to GitHub Pages without running a build workflow,
+      // raw TypeScript JSX (/src/main.tsx) cannot be run directly by browsers.
+      // This script detects if GitHub Pages is serving uncompiled root and redirects to /docs/ where the compiled app is ready.
+      (function() {
+        if (window.location.hostname.endsWith('github.io') && !window.location.pathname.includes('/docs/')) {
+          var uncompiledScript = document.querySelector('script[src*="main.tsx"]');
+          if (uncompiledScript) {
+            var path = window.location.pathname;
+            if (!path.endsWith('/')) { path += '/'; }
+            window.location.replace(path + 'docs/' + window.location.search + window.location.hash);
+          }
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
